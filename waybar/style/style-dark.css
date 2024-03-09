@@ -84,7 +84,7 @@ tooltip label{
     border-radius: 10px 0px 0px 10px;
 }
 
-#custom-light_dark, #custom-power_btn, #workspaces, #pulseaudio.microphone, #battery, #disk {
+#custom-light_dark, #custom-power_btn, #workspaces, #pulseaudio.microphone, #language, #battery, #disk {
     border-radius: 0px 10px 10px 0px;
     margin-right: 10px;
 }
@@ -127,6 +127,11 @@ tooltip label{
     color: #cba6f7;
     border-left: 0px;
     border-right: 0px;
+}
+
+#language {
+   border-left: 0px;
+   border-right: 0px;
 }
 
 #battery {

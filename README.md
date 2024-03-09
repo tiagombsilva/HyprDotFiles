@@ -3,20 +3,27 @@ An improved Hyprland deployment
 
 collection of dot config files for hyprland with a simple install script for a fresh Arch linux with yay
 
-You can grab the config files and install packages by hand with this commnad
+# Step 1 Arch
+Use archinstall script to install a minimal setup without DE.
+I opted for btfrs, systemd, no DE and git, base-devel packages.
+
+# Step 2 Hypr instalation
+First install yay package manager and then
+run the attached script "set-hypr" to install everything for you.
+
+# Dual boot Windows 11
 ```
-yay -S hyprland-bin kitty waybar-hyprland swww \ 
-swaylock-effects wofi wlogout mako xdg-desktop-portal-hyprland-git \
-swappy grim slurp thunar polkit-gnome python-requests pamixer \
-pavucontrol brightnessctl bluez bluez-utils blueman \
-network-manager-applet gvfs thunar-archive-plugin file-roller btop \
-pacman-contrib starship ttf-jetbrains-mono-nerd noto-fonts-emoji 
-lxappearance xfce4-settings sddm-git sddm-sugar-candy-git
+    sudo fdisk -l # check disks
+    sudo mount /dev/nvme0n1p1 /run/mount # mount EFI Windows partition
+    mkdir /boot/EFI/Windows # create Windows boot folder on systemd
+    cp /run/mount/EFI/Microsoft/Boot /boot/EFI/Windows # copy Windows bootloader to systemd 
+    touch /boot/loader/entries/windows.conf
+    # Write below the two lines below
+    title Windows 11
+    efi /EFI/Windows/bootmgfw.efi
 ```
 
-Or you can use the attached script "set-hypr" to install everything for you.
-
-Below is a list of the packages that would be installed
+Below is a list of the packages that will be installed
 
 - hyprland-bin: This is the Hyprland compositor
 - kitty: This is the default terminal
@@ -48,7 +55,7 @@ Below is a list of the packages that would be installed
 - starship: allows to customize the shell prompt
 - ttf-jetbrains-mono-nerd: Som nerd fonts for icons and overall look
 - noto-fonts-emoji: fonts needed by the weather script in the top bar
-- lxappearance: used to set GTK theme
+- lxappearance-gtk3: used to set GTK theme
 - xfce4-settings: set of tools for xfce, needed to set GTK theme
 - sddm-git: developement version of SDDM which is a display manager for graphical login
 - sddm-sugar-candy-git: an sddm theme my theme is based on (copy of)
