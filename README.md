@@ -43,9 +43,6 @@ Below is a list of the packages that will be installed
 - pamixer: This helps with audio settings such as volume
 - pavucontrol: GUI for managing audio and audio devices
 - brightnessctl: used to control monitor and keyboard bright level
-- bluez: the bluetooth service
-- bluez-utils: command line utilities to interact with bluettoth devices
-- blueman: Graphical bluetooth manager
 - network-manager-applet: Applet for managing network connection
 - gvfs: adds missing functionality to thunar such as automount usb drives
 - thunar-archive-plugin: Provides a front ent for thunar to work with compressed files
@@ -59,4 +56,8 @@ Below is a list of the packages that will be installed
 - xfce4-settings: set of tools for xfce, needed to set GTK theme
 - sddm-git: developement version of SDDM which is a display manager for graphical login
 - sddm-sugar-candy-git: an sddm theme my theme is based on (copy of)
+# optional packages
+- bluez: the bluetooth service
+- bluez-utils: command line utilities to interact with bluetooth devices
+- blueman: Graphical bluetooth manager
 
