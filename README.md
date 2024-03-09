@@ -5,7 +5,7 @@ collection of dot config files for hyprland with a simple install script for a f
 
 # Step 1 Arch
 Use archinstall script to install a minimal setup without DE.
-I opted for btfrs, systemd, no DE and git, base-devel packages.
+I opted for btfrs, systemd, pipewire, no DE and git, base-devel packages.
 
 # Step 2 Hypr instalation
 First install yay package manager and then
