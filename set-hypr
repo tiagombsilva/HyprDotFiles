@@ -144,8 +144,31 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     done
 
     #Stage 2
-    echo -e "\n$CNT - Stage 2 - Installing additional tools and utilities, this may take a while..."
-    for SOFTWR in polkit-gnome python-requests pamixer pavucontrol brightnessctl bluez bluez-utils blueman network-manager-applet gvfs thunar-archive-plugin file-roller btop pacman-contrib
+    echo -e "\n$CNT - Stage 2 - Installing bluetooth"
+    read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like install bluetooth? (y,n) ' INST
+    if [[ $INST == "Y" || $INST == "y" ]]; then
+        echo -e "$COK - Starting install bluetooth.."
+    for SOFTWR in bluez bluez-utils blueman
+    do
+        #First lets see if the package is there
+        if yay -Qs $SOFTWR > /dev/null ; then
+            echo -e "$COK - $SOFTWR is already installed."
+        else
+            echo -e "$CNT - Now installing $SOFTWR ..."
+            yay -S --noconfirm $SOFTWR &>> $INSTLOG
+            if yay -Qs $SOFTWR > /dev/null ; then
+                echo -e "$COK - $SOFTWR was installed."
+            else
+                echo -e "$CER - $SOFTWR install had failed, please check the install.log"
+                exit
+            fi
+        fi
+    done
+    fi
+
+    #Stage 3
+    echo -e "\n$CNT - Stage 3 - Installing additional tools and utilities, this may take a while..."
+    for SOFTWR in polkit-gnome python-requests pamixer pavucontrol brightnessctl network-manager-applet gvfs thunar-archive-plugin file-roller btop pacman-contrib
     do
         #First lets see if the package is there
         if yay -Qs $SOFTWR > /dev/null ; then
@@ -181,10 +204,12 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         fi
     done
 
-    # Start the bluetooth service
-    echo -e "$CNT - Starting the Bluetooth Service..."
-    sudo systemctl enable --now bluetooth.service &>> $INSTLOG
-    sleep 2
+    if yay -Qs bluez > /dev/null ; then
+        # Start the bluetooth service
+        echo -e "$CNT - Starting the Bluetooth Service..."
+        sudo systemctl enable --now bluetooth.service &>> $INSTLOG
+        sleep 2
+    fi
 
     # Enable the sddm login manager service
     echo -e "$CNT - Enabling the SDDM Service..."
