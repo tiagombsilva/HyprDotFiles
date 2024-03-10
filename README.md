@@ -61,3 +61,6 @@ Below is a list of the packages that will be installed
 - bluez-utils: command line utilities to interact with bluetooth devices
 - blueman: Graphical bluetooth manager
 
+# Other problems
+- docker/podman containers not working with host DNS https://stackoverflow.com/questions/39400886/docker-cannot-resolve-dns-on-private-network
+
