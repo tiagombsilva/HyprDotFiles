@@ -62,5 +62,5 @@ Below is a list of the packages that will be installed
 - blueman: Graphical bluetooth manager
 
 # Other problems
-- docker/podman containers not working with host DNS https://stackoverflow.com/questions/39400886/docker-cannot-resolve-dns-on-private-network
+- container with no access to host vpn using systemd https://wiki.archlinux.org/title/Systemd-resolved#DNS 
 
