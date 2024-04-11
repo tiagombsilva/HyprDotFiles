@@ -54,8 +54,9 @@ Below is a list of the packages that will be installed
 - noto-fonts-emoji: fonts needed by the weather script in the top bar
 - lxappearance-gtk3: used to set GTK theme
 - xfce4-settings: set of tools for xfce, needed to set GTK theme
-- sddm-git: developement version of SDDM which is a display manager for graphical login
+- sddm: developement version of SDDM which is a display manager for graphical login
 - sddm-sugar-candy-git: an sddm theme my theme is based on (copy of)
+- wayprompt: wayland pinentry to sign GPG
 # optional packages
 - bluez: the bluetooth service
 - bluez-utils: command line utilities to interact with bluetooth devices
@@ -63,6 +64,6 @@ Below is a list of the packages that will be installed
 
 # Other problems
 - container with no access to host vpn using systemd https://wiki.archlinux.org/title/Systemd-resolved#DNS
-- gpg signing with intellij use pinentry-program pinentry-gnome3 on ~/.gnupg/gpg-agent.conf if error use too: export GPG_TTY=$(tty)
+- If problems in GPG signing set variable: export GPG_TTY=$(tty)
 - slack sharing screen https://github.com/flathub/com.slack.Slack/issues/101
 
