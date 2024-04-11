@@ -168,7 +168,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
     #Stage 3
     echo -e "\n$CNT - Stage 3 - Installing additional tools and utilities, this may take a while..."
-    for SOFTWR in polkit-gnome python-requests pamixer pavucontrol brightnessctl network-manager-applet gvfs thunar-archive-plugin file-roller btop pacman-contrib
+    for SOFTWR in polkit-gnome python-requests pamixer pavucontrol brightnessctl network-manager-applet gvfs thunar-archive-plugin file-roller btop pacman-contrib wayprompt
     do
         #First lets see if the package is there
         if yay -Qs $SOFTWR > /dev/null ; then
@@ -226,16 +226,22 @@ read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to copy config files? (y,
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
     echo -e "$CNT - Copying config files..."
     for DIR in hypr kitty mako swaylock waybar wlogout wofi 
-    do 
-        DIRPATH=~/.config/$DIR
-        if [ -d "$DIRPATH" ]; then 
+    do
+        SOURCE_PATH=.config/$DIR
+        DEST_PATH=~/.config/$DIR
+        if [ -d "$DEST_PATH" ]; then 
             echo -e "$CAT - Config for $DIR located, backing up."
-            mv $DIRPATH $DIRPATH-back &>> $INSTLOG
-            echo -e "$COK - Backed up $DIR to $DIRPATH-back."
+            mv $DEST_PATH $DEST_PATH-back &>> $INSTLOG
+            echo -e "$COK - Backed up $DIR to $DEST_PATH-back."
         fi
-        echo -e "$CNT - Copying $DIR config to $DIRPATH."  
-        cp -R $DIR ~/.config/ &>> $INSTLOG
+        echo -e "$CNT - Copying $DIR config to $DEST_PATH."  
+        cp -R "$SOURCE_PATH" "$DEST_PATH" &>> $INSTLOG
     done
+
+    #Copying dot files
+    echo -e "$CNT - Copying dot files files..."
+    for DIR in .gnupg
+        cp -R ".dotfiles/$DIR" "~/$DIR"
 
     # Set some files as exacutable
     echo -e "$CNT - Setting some file as executable." 
