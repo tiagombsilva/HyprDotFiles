@@ -25,7 +25,7 @@ run the attached script "set-hypr" to install everything for you.
 
 Below is a list of the packages that will be installed
 
-- hyprland-bin: This is the Hyprland compositor
+- hyprland: This is the Hyprland compositor
 - kitty: This is the default terminal
 - waybar-hyprland: This is a fork of waybar with Hyprland workspace support
 - swww: This is used to set a desktop background image
@@ -54,7 +54,7 @@ Below is a list of the packages that will be installed
 - noto-fonts-emoji: fonts needed by the weather script in the top bar
 - lxappearance-gtk3: used to set GTK theme
 - xfce4-settings: set of tools for xfce, needed to set GTK theme
-- sddm: developement version of SDDM which is a display manager for graphical login
+- sddm: display manager for graphical login
 - sddm-sugar-candy-git: an sddm theme my theme is based on (copy of)
 - wayprompt: wayland pinentry to sign GPG
 # optional packages
